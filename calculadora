@@ -1,0 +1,72 @@
+f [ $# -eq 3 ]
+then
+      if [ $operacao == "+" ]
+      then
+         let result=$num1+$num2
+         echo "$result"
+      fi
+
+      if [ $operacao == "-" ]
+      then
+         let result=$num1-$num2
+         echo "$result"
+      fi
+
+      if [ $operacao == "x" ]
+      then
+         let result=$num1\*$num2
+         echo "$result"
+      fi
+
+      if [ $operacao == "/" ]
+      then
+         if [ $num2 != 0 ]
+         then
+            let result=$num1/$num2
+            echo "$result"
+         else
+            echo "ERRO: não é possivel dividir por 0"
+         fi
+      fi
+else
+   if [ $# -eq 0 ]
+   then
+      echo "Entre com o primeiro operador: "
+      read num1
+
+      echo "Entre com a operação: "
+      read operacao
+
+      echo "Entre com o segundo operador: "
+      read num2
+      if [ $operacao == "+" ]
+      then
+         let result=$num1+$num2
+         echo "$result"
+      fi
+
+      if [ $operacao == "-" ]
+      then
+         let result=$num1-$num2
+         echo "$result"
+      fi
+
+      if [ $operacao == "x" ]
+      then
+         let result=$num1\*$num2
+         echo "$result"
+      fi
+
+      if [ $operacao == "/" ]
+      then
+         if [ $num2 != 0 ]
+         then
+            let result=$num1/$num2
+            echo "$result"
+         else
+            echo "ERRO: não é possivel dividir por 0"
+         fi
+      fi
+   fi
+fi
+
