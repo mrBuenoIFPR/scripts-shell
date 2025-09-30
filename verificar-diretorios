@@ -1,0 +1,22 @@
+                         
+if [ -z "$1" ]; then
+    echo "ERRO: Você deve fornecer um diretório como parâmetro."
+    exit 1
+fi
+
+if [ ! -d "$1" ]; then
+    echo "ERRO: O caminho fornecido não é um diretório válido."
+    exit 1
+fi
+
+for item in "$1"/*; do
+    if [ -d "$item" ]; then
+        echo "$(basename "$item") (dir)"
+    else
+        echo "$(basename "$item")"
+    fi
+done
+
+
+
+
