@@ -1,72 +1,41 @@
-f [ $# -eq 3 ]
-then
-      if [ $operacao == "+" ]
-      then
-         let result=$num1+$num2
-         echo "$result"
-      fi
-
-      if [ $operacao == "-" ]
-      then
-         let result=$num1-$num2
-         echo "$result"
-      fi
-
-      if [ $operacao == "x" ]
-      then
-         let result=$num1\*$num2
-         echo "$result"
-      fi
-
-      if [ $operacao == "/" ]
-      then
-         if [ $num2 != 0 ]
-         then
-            let result=$num1/$num2
-            echo "$result"
-         else
-            echo "ERRO: não é possivel dividir por 0"
-         fi
-      fi
+if [ $# -eq 3 ]; then
+    num1=$1
+    operacao=$2
+    num2=$3
 else
-   if [ $# -eq 0 ]
-   then
-      echo "Entre com o primeiro operador: "
-      read num1
-
-      echo "Entre com a operação: "
-      read operacao
-
-      echo "Entre com o segundo operador: "
-      read num2
-      if [ $operacao == "+" ]
-      then
-         let result=$num1+$num2
-         echo "$result"
-      fi
-
-      if [ $operacao == "-" ]
-      then
-         let result=$num1-$num2
-         echo "$result"
-      fi
-
-      if [ $operacao == "x" ]
-      then
-         let result=$num1\*$num2
-         echo "$result"
-      fi
-
-      if [ $operacao == "/" ]
-      then
-         if [ $num2 != 0 ]
-         then
-            let result=$num1/$num2
-            echo "$result"
-         else
-            echo "ERRO: não é possivel dividir por 0"
-         fi
-      fi
-   fi
+    read -p "Entre com o primeiro operando: " num1
+    read -p "Entre com o operador: " operacao
+    read -p "Entre com o segundo operando: " num2
 fi
+
+
+case $operacao in
+    "+")
+        let result=$num1+$num2
+        echo "Operação: $num1 + $num2 = $result"
+        ;;
+
+    "-")
+        let result=$num1-$num2
+        echo "Operação: $num1 - $num2 = $result"
+        ;;
+
+    "x"|"*")
+        let result=$num1\*$num2
+        echo "Operação: $num1 x $num2 = $result"
+        ;;
+
+    "/")
+        if [ $num2 -ne 0 ]; then
+            let result=$num1/$num2
+            echo "Operação: $num1 / $num2 = $result"
+        else
+            echo "ERRO: não é possível dividir por 0"
+        fi
+        ;;
+
+    *)
+        echo "ERRO: Operação inválida. Use +, -, x, ou /."
+        ;;
+esac
 
